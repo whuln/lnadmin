@@ -1,11 +1,15 @@
 <template>
   <div ref="maindiv" class="main localmain">
-    <div class="left item">
-      <Button size="small" type="primary" ghost long>添加业务数据表</Button>
-      <br>
-      <Card style="height:500px;overflow:auto">
-        <Tag type="dot" color="primary" v-for="i in 100">Content of card</Tag>
-      </Card>
+    <div class="left item">    
+      <Collapse v-model="leftside">
+        <Panel name="1">
+          业务数据表
+          <div slot="content">
+             <Button size="small" type="primary" ghost long>添加业务数据表</Button>
+              <Table   :height="mainsize - 100" :width="180" :columns="columns0" :data="data1"></Table>
+            </div>
+        </Panel>
+      </Collapse>
     </div>
     <div class="right item">
       <div class="toolbar">
@@ -33,10 +37,17 @@ export default {
   data() {
     return {
       batch: false, //批量录入对话框
+      leftside: "1",
       mainsize: {
         h: 600,
         w: 1100
       },
+      columns0: [
+        {
+          title: "业务数据表",
+          key: "name"
+        }
+      ],
       columns1: [
         {
           title: "Name",
@@ -90,7 +101,7 @@ export default {
     dataTableSize() {
       return {
         h: this.mainsize.h - 40,
-        w: this.mainsize.w - 200
+        w: this.mainsize.w - 220
       };
     }
   },
@@ -131,7 +142,7 @@ export default {
   }
 
   .left {
-    flex: 0 0 200px;
+    flex: 0 0 220px;
     border-right: 1px solid silver;
   }
 

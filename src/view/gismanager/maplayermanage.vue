@@ -159,7 +159,7 @@ export default {
         {
           title: "链接",
           slot: "url",
-          width: 430
+          // width: 430
         },
         {
           title: "操作",
